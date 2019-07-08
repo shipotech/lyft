@@ -1,0 +1,81 @@
+
+.hero {
+    background-color: #785ef0;
+}
+
+.h1-title {
+    font-size: 5rem;
+}
+
+.form-check-input[type=radio]:not(:checked)+label:after,
+.form-check-input[type=radio]:not(:checked)+label:before,
+label.btn input[type=radio]:not(:checked)+label:after,
+label.btn input[type=radio]:not(:checked)+label:before {
+    border: 2px solid #ffffff !important;
+}
+
+.form-check-input[type=radio].with-gap:checked+label:after,
+.form-check-input[type=radio]:checked+label:after,
+label.btn input[type=radio].with-gap:checked+label:after,
+label.btn input[type=radio]:checked+label:after {
+    background-color: #ffffff;
+}
+
+.form-check-input[type=radio]+label:after,
+.form-check-input[type=radio]+label:before,
+label.btn input[type=radio]+label:after,
+label.btn input[type=radio]+label:before {
+    margin: 2px;
+    width: 20px;
+    height: 20px;
+}
+
+.md-form input[type=text]:focus:not([readonly]) {
+    border: none !important;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+.color-input {
+    left: 1rem !important;
+}
+
+.md-form label.active {
+    -webkit-transform: translateY(-4px) scale(0.7) !important;
+    -moz-transform: translateY(-4px) scale(0.7) !important;
+    -ms-transform: translateY(-4px) scale(0.7) !important;
+    -o-transform: translateY(-4px) scale(0.7) !important;
+    transform: translateY(-4px) scale(0.7) !important;
+}
+
+.form-check-input.is-valid~.form-check-label,
+.was-validated .form-check-input:valid~.form-check-label {
+    color: #ffffff !important;
+}
+
+.form-check-input[type=checkbox]+label:before,
+.form-check-input[type=checkbox]:not(.filled-in)+label:after,
+label.btn input[type=checkbox]+label:before,
+label.btn input[type=checkbox]:not(.filled-in)+label:after {
+    width: 20px;
+    height: 20px;
+    z-index: 0;
+    border: 2px solid #ffffff;
+}
+
+.form-check-input[type=checkbox]:checked+label:before, label.btn input[type=checkbox]:checked+label:before {
+    border-right: 2px solid #ffffff !important;
+    border-bottom: 2px solid #ffffff !important;
+}
+
+@media (max-width: 740px) {
+    .h1-title {
+        font-size: 2.5rem;
+    }
+}
+@media (min-width: 800px) and (max-width: 850px) {
+    .h1-title {
+        font-size: 3.5rem;
+    }
+}
