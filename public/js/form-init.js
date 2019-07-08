@@ -97,7 +97,7 @@
 
                                 if (data.status) {
                                     $('header').remove();
-                                    $('body').prepend(data.view);
+                                    $('body').prepend(data.view).addClass('vh-100');
                                     toastr.success('Registrado correctamente.')
                                 } else {
                                     $.each(data.errors, function(index, value) {
