@@ -23,3 +23,12 @@ $(document).on("keyup change input", '[chars]', function (event) {
     $('div#' + tooltipName + '-invalid').removeClass('d-block');
 
 });
+
+// Input Filter email
+$(document).on("keyup change input", '#email', function (event) {
+    var $elem = $(this);
+    // Remover clases de validación de inputs
+    var tooltipName = $elem.attr('id');
+    $elem.removeClass('is-invalid');
+    $('div#' + tooltipName + '-invalid').removeClass('d-block');
+});

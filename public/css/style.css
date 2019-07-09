@@ -6,6 +6,10 @@
     font-size: 5rem;
 }
 
+.noscript {
+    z-index: 9999;
+}
+
 .form-check-input[type=radio]:not(:checked)+label:after,
 .form-check-input[type=radio]:not(:checked)+label:before,
 label.btn input[type=radio]:not(:checked)+label:after,
@@ -72,9 +76,26 @@ label.btn input[type=checkbox]:not(.filled-in)+label:after {
     .h1-title {
         font-size: 2.5rem;
     }
+
+    .full-height {
+        height: 100vh !important;
+    }
 }
+
+@media (min-width: 741px) and (max-width: 990px){
+    .full-height {
+        height: 100vh !important;
+    }
+}
+
 @media (min-width: 800px) and (max-width: 850px) {
     .h1-title {
         font-size: 3.5rem;
+    }
+}
+
+@media (min-width: 991px){
+    .full-height {
+        height: 100vh !important;
     }
 }

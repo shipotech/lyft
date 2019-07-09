@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'UserController@index')->name('home');
+Route::post('/', 'UserController@index')->name('home.post');
 
 Route::post('/form-1', 'UserController@form1')->name('user.form1');
 

@@ -38,15 +38,20 @@
                                 $('#send_form1').prop('disabled', false).html('Siguiente');
                                 $('#form-part1').removeClass('was-validated');
 
+                                if (data.existEmail) {
+                                    window.location.replace("/");
+
+                                    return false;
+                                }
+
                                 if (data.status) {
                                     $('.form-part-1').addClass('d-none');
                                     $('.form-part-2').removeClass('d-none');
                                 } else {
                                     $.each(data.errors, function(index, value) {
                                         //- extract target value
-                                        let indx = value.split(' ')[1];
-                                        $('#' + indx + '-invalid').addClass('d-block');
-                                        $('input#' + indx).addClass('is-invalid');
+                                        $('#number-invalid').addClass('d-block').html('<i class="fas fa-exclamation-circle"></i> ' + value);
+                                        $('input#number').addClass('is-invalid');
                                     });
                                 }
                             },
@@ -97,13 +102,13 @@
 
                                 if (data.status) {
                                     $('header').remove();
-                                    $('body').prepend(data.view).addClass('vh-100');
-                                    toastr.success('Registrado correctamente.')
+                                    $('body').prepend(data.view).addClass('full-height');
+                                    toastr.success('Te has registrado correctamente.');
                                 } else {
                                     $.each(data.errors, function(index, value) {
                                         //- extract target value
                                         let indx = value.split(' ')[1];
-                                        $('#' + indx + '-invalid').addClass('d-block');
+                                        $('#' + indx + '-invalid').addClass('d-block').html('<i class="fas fa-exclamation-circle"></i> ' + value);
                                         $('input#' + indx).addClass('is-invalid');
                                     });
                                 }

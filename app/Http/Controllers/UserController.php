@@ -10,13 +10,21 @@ class UserController extends Controller
 {
     public function index()
     {
-        return view('home');
+        if (session('user_exist')) {
+            return view('logged');
+        } else {
+            return view('home');
+        }
     }
     
     public function empty_session()
     {
         if (session('current_user_id')){
             session(['current_user_id' => false]);
+        }
+        
+        if (session('user_exist')) {
+            session(['user_exist' => false]);
         }
         
         return redirect()->route('home');
@@ -40,24 +48,54 @@ class UserController extends Controller
                 return response()->json($arr, 200);
             }
         
-            // Store new number
-            $user = new User;
-            $user->car    = $request->get('car');
-            $user->number = $request->get('number');
-            $user->save();
-        
-            if($user){
+            // Store new number but first consult if this number is in the DB and if this record have a email
+            $exist_number = User::where('number', $request->get('number'))->first();
+            
+            $exist_email = false;
+            if ($exist_number) {
+                $user = true;
+                $exist_email = User::where('id', $exist_number->id)->get();
+                
+                if ($exist_email) {
+                    // User have an account
+                    session(['user_exist' => true]);
+                    
+                    // Message on view
+                    session(['message_logged' => 'Hola '.ucwords($exist_number->name).'!']);
+                }
+    
+                // Assign user id to session view (show the Form-2)
+                session(['current_user_id' => $exist_number->id]);
+            } else {
+                $user = new User;
+                $user->car    = $request->get('car');
+                $user->number = $request->get('number');
+                $user->save();
+    
                 // Assign user id to session view (show the Form-2)
                 session(['current_user_id' => $user->id]);
+            }
             
-                $arr = [
-                    'msg'       => 'Successfully submit form using ajax',
-                    'status'    => true,
-                ];
+        
+            if($user){
+                if (session('user_exist')) {
+                    $arr = [
+                        'msg'       => 'Successfully submit form using ajax',
+                        'status'    => true,
+                        'existEmail'      => $exist_email
+                    ];
+                } else {
+                    $arr = [
+                        'msg'       => 'Successfully submit form using ajax',
+                        'status'    => true,
+                        'existEmail'      => $exist_email
+                    ];
+                }
             } else {
                 $arr = [
                     'msg'       => 'Something goes to wrong. Please try again later',
                     'status'    => false,
+                    'existEmail'      => $exist_email
                 ];
             }
         }
@@ -79,8 +117,7 @@ class UserController extends Controller
                 // Defining response
                 $arr = array(
                     'status'    => false,
-                    'errors'    => $validator->errors()->all(),
-                    'code'      => $request->get('code')
+                    'errors'    => $validator->errors()->all()
                 );
                 
                 return Response()->json($arr, 200);
@@ -94,6 +131,9 @@ class UserController extends Controller
                 if (session('current_user_id')){
                     session(['current_user_id' => false]);
                 }
+    
+                // User have an account
+                session(['user_exist' => true]);
     
                 $arr = [
                     'msg'       => 'Something goes to wrong. Please try again later',

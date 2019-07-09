@@ -16,46 +16,80 @@
 </head>
 
 <body @yield('bodyClass' , '')>
+@php
+    $noscript = true;
+@endphp
+<script type="text/javascript">
+    let total = 2 + 3;
+
+    if (total == 5) {
+        @php
+            $noscript = false;
+        @endphp
+    }
+</script>
+<noscript>
+    <div class="container-fluid d-flex flex-column vh-100 justify-content-center position-fixed noscript white">
+        <h1 class="text-center h1-responsive">Comprobando si javascript está habilitado</h1>
+        <div class="container text-center mt-2">
+            <p class="lead">
+                <i class="fas fa-exclamation-circle red-text"></i>
+                Javascript está <strong>deshabilitado</strong> en su navegador web.<br/>
+                Por favor, para ver correctamente este sitio,<br/>
+                <strong><i>habilite javascript</i></strong>.<br/>
+                <br/></p>
+            <p class="lead black-text">
+                Para ver las instrucciones para habilitar javascript<br/>
+                en su navegador, haga click
+                <a href="http://www.enable-javascript.com/es/" target="_blank">aquí</a>.
+            </p>
+        </div>
+    </div>
+</noscript>
+@if(!$noscript)
     <!--Header-->
     @yield('header')
     <!--Header-->
 
-<!--Main-->
-<div class="container">
-    @yield('main')
-</div>
-<!--Main-->
+    <!--Main-->
+    <div class="container">
+        @yield('main')
+    </div>
+    <!--Main-->
 
-<!-- SCRIPTS -->
-<!-- JQuery -->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-<!-- Bootstrap tooltips -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"
-        integrity="sha256-fTuUgtT7O2rqoImwjrhDgbXTKUwyxxujIMRIK7TbuNU=" crossorigin="anonymous" defer></script>
-<!-- Bootstrap core JavaScript -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/shipotech/mdbootstrap-4.8.2/mdbootstrap.min.js"
-        defer></script>
-<!-- LazySize -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/shipotech/portfolio_assets/lazysizes.min.js"
-        defer></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/shipotech/portfolio_assets/unveilhooks.min.js"
-        defer></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/shipotech/portfolio_assets/images-loading.js"
-        defer></script>
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <!-- Bootstrap tooltips -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"
+            integrity="sha256-fTuUgtT7O2rqoImwjrhDgbXTKUwyxxujIMRIK7TbuNU=" crossorigin="anonymous" defer></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/shipotech/mdbootstrap-4.8.2/mdbootstrap.min.js"
+            defer></script>
+    <!-- LazySize -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/shipotech/portfolio_assets/lazysizes.min.js"
+            defer></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/shipotech/portfolio_assets/unveilhooks.min.js"
+            defer></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/shipotech/portfolio_assets/images-loading.js"
+            defer></script>
 
     <!--Page Scripts-->
     @yield('scripts')
     <!--Page Scripts-->
 
-<!--Funciones-->
-<script type="text/javascript">
-    // Tooltips Initialization
-    $(function () {
-        $('[data-toggle="tooltip"]').tooltip();
-    });
-</script>
-<!--Funciones-->
+    <!--Funciones-->
+    <script type="text/javascript">
+        // Tooltips Initialization
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+    <!--Funciones-->
+@else
+
+@endif
 </body>
 
 </html>
