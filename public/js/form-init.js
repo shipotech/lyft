@@ -50,8 +50,8 @@
                                 } else {
                                     $.each(data.errors, function(index, value) {
                                         //- extract target value
-                                        $('#number-invalid').addClass('d-block').html('<i class="fas fa-exclamation-circle"></i> ' + value);
-                                        $('input#number').addClass('is-invalid');
+                                        $('#' + index + '-invalid').addClass('d-block').html('<i class="fas fa-exclamation-circle"></i> ' + value);
+                                        $('input#' + index).addClass('is-invalid');
                                     });
                                 }
                             },
@@ -99,6 +99,8 @@
                             success: function (data) {
                                 $('#send_form2').prop('disabled', false).html('Siguiente');
                                 $('#form-part2').removeClass('was-validated');
+                                $('footer').remove();
+                                $('#footer-script').remove();
 
                                 if (data.status) {
                                     $('header').remove();
@@ -107,9 +109,8 @@
                                 } else {
                                     $.each(data.errors, function(index, value) {
                                         //- extract target value
-                                        let indx = value.split(' ')[1];
-                                        $('#' + indx + '-invalid').addClass('d-block').html('<i class="fas fa-exclamation-circle"></i> ' + value);
-                                        $('input#' + indx).addClass('is-invalid');
+                                        $('#' + index + '-invalid').addClass('d-block').html('<i class="fas fa-exclamation-circle"></i> ' + value);
+                                        $('input#' + index).addClass('is-invalid');
                                     });
                                 }
                             },

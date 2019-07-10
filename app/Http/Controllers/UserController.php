@@ -42,7 +42,7 @@ class UserController extends Controller
                 // Defining response
                 $arr = array(
                     'status'    => false,
-                    'errors'    => $validator->errors()->all()
+                    'errors'    => $validator->messages()
                 );
             
                 return response()->json($arr, 200);
@@ -80,22 +80,22 @@ class UserController extends Controller
             if($user){
                 if (session('user_exist')) {
                     $arr = [
-                        'msg'       => 'Successfully submit form using ajax',
-                        'status'    => true,
-                        'existEmail'      => $exist_email
+                        'msg'           => 'Successfully submit form using ajax',
+                        'status'        => true,
+                        'existEmail'    => $exist_email
                     ];
                 } else {
                     $arr = [
-                        'msg'       => 'Successfully submit form using ajax',
-                        'status'    => true,
-                        'existEmail'      => $exist_email
+                        'msg'           => 'Successfully submit form using ajax',
+                        'status'        => true,
+                        'existEmail'    => $exist_email
                     ];
                 }
             } else {
                 $arr = [
-                    'msg'       => 'Something goes to wrong. Please try again later',
-                    'status'    => false,
-                    'existEmail'      => $exist_email
+                    'msg'           => 'Something goes to wrong. Please try again later',
+                    'status'        => false,
+                    'existEmail'    => $exist_email
                 ];
             }
         }
@@ -117,7 +117,7 @@ class UserController extends Controller
                 // Defining response
                 $arr = array(
                     'status'    => false,
-                    'errors'    => $validator->errors()->all()
+                    'errors'    => $validator->messages()
                 );
                 
                 return Response()->json($arr, 200);

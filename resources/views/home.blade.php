@@ -12,7 +12,7 @@
 
         <!-- Grid row -->
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 animated fadeInRight">
                 <h1 class="h1-responsive font-weight-bold pt-5 h1-title">Maneja por lo importante.</h1>
             </div>
 
@@ -52,7 +52,7 @@
                                         <div class="row p-0 m-0">
                                             <label for="number" class="white-text color-input pl-2">Número de teléfono
                                                 movil</label>
-                                            <input type="text" class="form-control white-text border-bottom-0 border-0 pt-4 pb-3 mb-0 pl-3" id="number" name="number" maxlength="10" chars="0-9" required/>
+                                            <input type="text" class="form-control white-text border-bottom-0 border-0 pt-4 pb-3 mb-0 pl-3" id="number" name="number" maxlength="10" chars="0-9"/>
 
                                             <div class="invalid-tooltip ml-3" id="number-invalid">
                                                 <i class="fas fa-exclamation-circle"></i> Por favor, ingrese un número
@@ -114,10 +114,10 @@
                                 <div class="col-md-4 md-form">
                                     <div class="rounded light-blue darken-4 overflow-hidden">
                                         <div class="row p-0 m-0">
-                                            <label for="last" class="white-text color-input pl-2">Apellido</label>
-                                            <input type="text" class="form-control white-text border-bottom-0 border-0 pt-4 pb-3 mb-0 pl-3" maxlength="50" id="last" name="last_name" chars="A-Za-zñÑ\s" required/>
+                                            <label for="last_name" class="white-text color-input pl-2">Apellido</label>
+                                            <input type="text" class="form-control white-text border-bottom-0 border-0 pt-4 pb-3 mb-0 pl-3" maxlength="50" id="last_name" name="last_name" chars="A-Za-zñÑ\s" required/>
 
-                                            <div class="invalid-tooltip ml-3" id="last-invalid">
+                                            <div class="invalid-tooltip ml-3" id="last_name-invalid">
                                                 <i class="fas fa-exclamation-circle"></i> Tienes que ingresar un apellido.
                                             </div>
                                         </div>
@@ -186,7 +186,7 @@
     <script type="text/javascript" src="{{ asset('js/form-init.js') }}" defer></script>
     <script type="text/javascript" src="{{ asset('js/input-filter.js') }}" defer></script>
     <script type="text/javascript" src="{{ asset('js/check-form.js') }}" defer></script>
-    <script type="text/javascript">
+    <script type="text/javascript" id="footer-script">
         $(document).ready(function () {
             var aviso = $('#aviso').hide(0);
             $(window).scroll(function(){
