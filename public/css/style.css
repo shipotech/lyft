@@ -3,11 +3,15 @@
 }
 
 .h1-title {
-    font-size: 5rem;
+    font-size: 2.75rem !important;
 }
 
 .noscript {
     z-index: 9999;
+}
+
+.z-index {
+    z-index: 999;
 }
 
 .form-check-input[type=radio]:not(:checked)+label:after,
@@ -72,6 +76,33 @@ label.btn input[type=checkbox]:not(.filled-in)+label:after {
     border-bottom: 2px solid #ffffff !important;
 }
 
+
+/* Styles for main content */
+.text-content{
+    color: #373a3c !important;
+    font-family: "Lyft Pro", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    line-height: 1.25;
+    letter-spacing: -0.3px;
+    font-weight: 600;
+}
+
+.decoration:hover {
+    text-decoration: underline;
+}
+
+.bg-bone {
+    background-color: #F3F3F5;
+}
+
+.img-carousel {
+    height: 500px;
+}
+
+.icon-img {
+    height: 8rem;
+}
+/* Styles for main content */
+
 @media (max-width: 740px) {
     .h1-title {
         font-size: 2.5rem;
@@ -79,6 +110,15 @@ label.btn input[type=checkbox]:not(.filled-in)+label:after {
 
     .full-height {
         height: 100vh !important;
+    }
+
+    .w-50,
+    .w-75 {
+        width: 100% !important;
+    }
+
+    .img-carousel {
+        height: 280px;
     }
 }
 

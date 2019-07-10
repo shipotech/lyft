@@ -16,18 +16,6 @@
 </head>
 
 <body @yield('bodyClass' , '')>
-@php
-    $noscript = true;
-@endphp
-<script type="text/javascript">
-    let total = 2 + 3;
-
-    if (total == 5) {
-        @php
-            $noscript = false;
-        @endphp
-    }
-</script>
 <noscript>
     <div class="container-fluid d-flex flex-column vh-100 justify-content-center position-fixed noscript white">
         <h1 class="text-center h1-responsive">Comprobando si javascript está habilitado</h1>
@@ -46,16 +34,21 @@
         </div>
     </div>
 </noscript>
-@if(!$noscript)
     <!--Header-->
     @yield('header')
     <!--Header-->
 
     <!--Main-->
-    <div class="container">
-        @yield('main')
-    </div>
+    @yield('main')
+    @include('section')
+    @include('section2')
+    @include('section3')
+    @include('section4')
     <!--Main-->
+
+    <!--Footer-->
+    @yield('footer')
+    <!--Footer-->
 
     <!-- SCRIPTS -->
     <!-- JQuery -->
@@ -84,12 +77,13 @@
         // Tooltips Initialization
         $(function () {
             $('[data-toggle="tooltip"]').tooltip();
+
+            $('.carousel').carousel({
+                interval: false
+            });
         });
     </script>
     <!--Funciones-->
-@else
-
-@endif
 </body>
 
 </html>

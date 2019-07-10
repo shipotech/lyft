@@ -3,7 +3,7 @@
 @section('title', 'Lyft')
 
 @section('header')
-<header class="white-text blue-gradient">
+<header class="white-text blue-gradient h-100" id="header">
     <!-- Jumbotron -->
 
     <div class="container pt-5">
@@ -16,7 +16,7 @@
                 <h1 class="h1-responsive font-weight-bold pt-5 h1-title">Maneja por lo importante.</h1>
             </div>
 
-            <div id="form-container" class="col-12">
+            <div id="form-container" class="col-12 pb-5">
 
 
                 <div class="form-part-1 @if(session('current_user_id')) d-none @endif ">
@@ -47,7 +47,7 @@
 
                             <div class="form-row">
 
-                                <div class="col-md-4 md-form mb-5">
+                                <div class="col-md-4 md-form my-5">
                                     <div class="rounded light-blue darken-4 overflow-hidden hoverable">
                                         <div class="row p-0 m-0">
                                             <label for="number" class="white-text color-input pl-2">Número de teléfono
@@ -62,7 +62,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-8 md-form mt-md-4 mt-0 px-0 mb-5">
+                                <div class="col-md-8 md-form mt-md-5 mt-0 px-0 mb-5">
                                     <div class="form-check pl-1 pl-md-3">
                                         <input class="form-check-input" type="checkbox" name="terms" value="yes"
                                                id="terms" required/>
@@ -79,7 +79,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-row mb-5">
+                            <div class="form-row my-5">
                                 <button class="btn btn-light btn-lg btn-rounded font-weight-bold" id="send_form1" type="submit">
                                     Siguiente
                                 </button>
@@ -88,7 +88,7 @@
                     </div>
                 </div>
 
-                <div class="form-part-2 container-fluid px-0 animated fadeInRight @if(session('current_user_id'))d-block @else d-none @endif">
+                <div class="form-part-2 container-fluid px-0 @if(session('current_user_id')) d-block @else d-none @endif animated fadeInRight">
                     <div class="col-12 px-0 pt-4">
                         <h5 class="mb-3 font-weight-bolder">Regístrate para manejar</h5>
                         <p class="font-weight-bolder">¡Perfecto! Necesitamos un poco más de información para poder empezar.</p>
@@ -178,8 +178,37 @@
 </header>
 @endsection
 
+@section('footer')
+    @include('footer')
+@endsection
+
 @section('scripts')
     <script type="text/javascript" src="{{ asset('js/form-init.js') }}" defer></script>
     <script type="text/javascript" src="{{ asset('js/input-filter.js') }}" defer></script>
     <script type="text/javascript" src="{{ asset('js/check-form.js') }}" defer></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var aviso = $('#aviso').hide(0);
+            $(window).scroll(function(){
+                var windowHeight = $(window).scrollTop();
+                var contenido2 = $("#contenido").offset();
+
+                contenido2 = contenido2.top;
+
+                if(windowHeight >= contenido2  ){
+                    aviso.queue(function () {
+                        $(this).fadeIn(500).removeClass('d-none').dequeue();
+                    });
+                }else{
+                    aviso.queue(function () {
+                        $(this).fadeOut(500).dequeue();
+                    });
+                }
+            });
+
+            $('#hide-footer').on('click', function () {
+                aviso.hide(500);
+            });
+        });
+    </script>
 @endsection

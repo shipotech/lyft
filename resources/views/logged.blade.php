@@ -45,6 +45,8 @@
     </header>
 @endsection
 
+@section('footer', '')
+
 @if(session('message_logged'))
     @section('scripts')
         <script type="text/javascript">
