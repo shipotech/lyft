@@ -52,7 +52,7 @@
                                         <div class="row p-0 m-0">
                                             <label for="number" class="white-text color-input pl-2">Número de teléfono
                                                 movil</label>
-                                            <input type="text" class="form-control white-text border-bottom-0 border-0 pt-4 pb-3 mb-0 pl-3" id="number" name="number" maxlength="10" chars="0-9"/>
+                                            <input type="text" class="form-control white-text border-bottom-0 border-0 pt-4 pb-3 mb-0 pl-3" id="number" name="number" maxlength="10" chars="0-9" required/>
 
                                             <div class="invalid-tooltip ml-3" id="number-invalid">
                                                 <i class="fas fa-exclamation-circle"></i> Por favor, ingrese un número
